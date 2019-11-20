@@ -6,7 +6,16 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.textquest.HomeFragment"
+        android:name="com.example.textquest.ui.home_screen.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_newGameFragment"
+            app:destination="@id/newGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newGameFragment"
+        android:name="com.example.textquest.ui.new_game_screen.NewGameFragment"
+        android:label="new_game_fragment"
+        tools:layout="@layout/new_game_fragment" />
 </navigation>

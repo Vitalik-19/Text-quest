@@ -1,4 +1,4 @@
-package com.example.textquest
+package com.example.textquest.ui.home_screen
 
 import androidx.lifecycle.ViewModel
 
