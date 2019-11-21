@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_newGameFragment"
             app:destination="@id/newGameFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newGameFragment"
@@ -24,7 +27,12 @@
     </fragment>
     <fragment
         android:id="@+id/personageNoteFragment"
-        android:name="com.example.textquest.ui.personage_note.PersonageNoteFragment"
+        android:name="com.example.textquest.ui.personage_note_screen.PersonageNoteFragment"
         android:label="personage_note_fragment"
         tools:layout="@layout/personage_note_fragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.textquest.ui.settings_screen.SettingsFragment"
+        android:label="settings_fragment"
+        tools:layout="@layout/settings_fragment" />
 </navigation>

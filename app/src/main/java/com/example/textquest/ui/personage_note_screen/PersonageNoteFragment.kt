@@ -1,4 +1,4 @@
-package com.example.textquest.ui.personage_note
+package com.example.textquest.ui.personage_note_screen
 
 import android.os.Bundle
 import android.view.LayoutInflater

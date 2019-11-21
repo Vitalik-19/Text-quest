@@ -30,6 +30,7 @@ class NewGameFragment : Fragment() {
         personage.add("Веста")
         personage.add("Шрам")
         personage.add("Стрелок")
+        personage.add("Vitalik")
 
 
         recycler_view_personage_list.layoutManager = LinearLayoutManager(Fragment().context)
