@@ -20,6 +20,7 @@ class NewGameFragment : Fragment() {
     private lateinit var viewModel: NewGameViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.new_game_fragment, container, false)
     }
 
@@ -33,6 +34,17 @@ class NewGameFragment : Fragment() {
 
         recycler_view_personage_list.layoutManager = LinearLayoutManager(Fragment().context)
         recycler_view_personage_list.adapter = PersonageAdapter(personage)
+
+/*
+        val buttonStart: Button = view.findViewById(R.id.name_personage_button)
+
+        buttonStart.setOnClickListener {
+            if (buttonStart.text == "Веста") {
+
+                view.findNavController().navigate(R.id.action_newGameFragment_to_personageNoteFragment)
+            }
+        }
+*/
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
