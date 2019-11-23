@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/personage_note_fragment_button_start"
-        style="@style/borderButtonItemPersonage"
+        style="@style/borderButton"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_gravity="center_horizontal"

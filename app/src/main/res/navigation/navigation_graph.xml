@@ -35,4 +35,19 @@
         android:name="com.example.textquest.ui.settings_screen.SettingsFragment"
         android:label="settings_fragment"
         tools:layout="@layout/settings_fragment" />
+    <fragment
+        android:id="@+id/chaptersFragment"
+        android:name="com.example.textquest.ui.chapters_screen.ChaptersFragment"
+        android:label="chapters_fragment"
+        tools:layout="@layout/chapters_fragment" />
+    <fragment
+        android:id="@+id/gamePlayFragment"
+        android:name="com.example.textquest.ui.game_play_screen.GamePlayFragment"
+        android:label="game_play_fragment"
+        tools:layout="@layout/game_play_fragment" />
+    <fragment
+        android:id="@+id/gameOverFragment"
+        android:name="com.example.textquest.GameOverFragment"
+        android:label="game_over_fragment"
+        tools:layout="@layout/game_over_fragment" />
 </navigation>
