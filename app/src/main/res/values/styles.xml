@@ -12,4 +12,8 @@
         <item name="android:background">@drawable/background_home_screen</item>
     </style>
 
+    <style name="borderButtonItemPersonage" parent="@style/AppTheme">
+        <item name="android:background">@drawable/border_button_item_personage</item>
+    </style>
+
 </resources>

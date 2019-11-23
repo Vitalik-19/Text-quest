@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <Button
+
+    <LinearLayout
         android:id="@+id/name_personage_button"
-        android:layout_width="220dp"
-        android:layout_height="65dp"
-        android:layout_gravity="center"
+        style="@style/borderButtonItemPersonage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:text="Button"
-        android:textSize="24sp" />
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/namePersonage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#222"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
 </LinearLayout>
