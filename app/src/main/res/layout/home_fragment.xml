@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundHomeScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/backgruond"
+    android:padding="50dp"
     tools:context=".ui.home_screen.HomeFragment">
 
 
@@ -12,38 +13,47 @@
         android:id="@+id/home_fragment_image_logo_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="45dp"
+        android:layout_margin="40dp"
+        android:layout_weight="4"
         android:src="@mipmap/ic_launcher_round" />
 
     <Button
         android:id="@+id/home_fragment_button_new_game"
+        style="@style/borderButtonItemPersonage"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_weight="1"
         android:text="@string/home_fragment_button_new_game_text"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/home_fragment_button_continue"
+        style="@style/borderButtonItemPersonage"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_weight="1"
         android:text="@string/home_fragment_button_continue_text"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/home_fragment_button_settings"
+        style="@style/borderButtonItemPersonage"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_weight="1"
         android:text="@string/home_fragment_button_settings_text"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundHomeScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="30dp"
     tools:context=".ui.personage_note_screen.PersonageNoteFragment">
 
 
@@ -12,38 +13,31 @@
         android:id="@+id/personage_note_fragment_avatar_personage"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintBottom_toTopOf="@+id/personage_note_fragment_note"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.362" />
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="2"
+        android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/personage_note_fragment_note"
         android:layout_width="350dp"
         android:layout_height="340dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/personage_note_fragment_button_start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="24sp"
         tools:text="Описание" />
 
     <Button
         android:id="@+id/personage_note_fragment_button_start"
+        style="@style/borderButtonItemPersonage"
         android:layout_width="220dp"
         android:layout_height="65dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="32dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="2"
         android:text="@string/personage_note_fragment_button_start_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

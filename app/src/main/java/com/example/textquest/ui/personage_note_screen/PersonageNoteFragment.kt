@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.textquest.R
+import com.example.textquest.ui.Personage
+import com.example.textquest.ui.PersonageData
+import com.example.textquest.ui.idPersonage
 
 
 class PersonageNoteFragment : Fragment() {
@@ -20,8 +23,8 @@ class PersonageNoteFragment : Fragment() {
     private lateinit var viewModel: PersonageNoteViewModel
     private lateinit var notePersonage: TextView
     private lateinit var avatarPersonage: ImageView
-    private lateinit var notePersonageList: ArrayList<String>
 
+    val personage: List<Personage> = PersonageData().personageData
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -32,13 +35,10 @@ class PersonageNoteFragment : Fragment() {
         notePersonage = view.findViewById(R.id.personage_note_fragment_note)
         avatarPersonage = view.findViewById(R.id.personage_note_fragment_avatar_personage)
 
-        notePersonageList = arrayListOf(
-                "Веста",
-                "Шрам",
-                "Стрелок"
-        )
+        val item = personage[idPersonage]
 
-//        notePersonage.text = notePersonageList[]
+
+        notePersonage.text = item.description
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
