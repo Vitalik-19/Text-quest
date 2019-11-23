@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.textquest.R
 import com.example.textquest.ui.Personage
+import com.example.textquest.ui.PersonageData
 import kotlinx.android.synthetic.main.new_game_fragment.*
 
 
@@ -27,16 +28,10 @@ class NewGameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val personage: List<Personage> = listOf(
-                Personage(1, "Веста", "жгучая девушка"),
-                Personage(2, "Шрам", "потрепаный парень"),
-                Personage(3, "Стрелок", "всегда меткий"),
-                Personage(4, "Сталкер", "искатель аномалий на жопу"),
-                Personage(5, "Волк", "проходи мимо сталкер...")
-        )
+        val personageData: List<Personage> = PersonageData().personageData
 
         recycler_view_personage_list.layoutManager = LinearLayoutManager(Fragment().context)
-        recycler_view_personage_list.adapter = PersonageAdapter(personage)
+        recycler_view_personage_list.adapter = PersonageAdapter(personageData)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -45,6 +40,5 @@ class NewGameFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(NewGameViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 
 }

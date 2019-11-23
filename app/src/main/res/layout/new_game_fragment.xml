@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/backgroundHomeScreen"
     tools:context=".ui.new_game_screen.NewGameFragment">
 
 
@@ -11,10 +12,11 @@
         android:id="@+id/new_game_fragment_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="@string/new_game_fragment_title_text"
+        android:textColor="#222"
         android:textSize="24sp"
         android:textStyle="bold" />
 

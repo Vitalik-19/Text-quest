@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/backgroundHomeScreen"
     tools:context=".ui.personage_note_screen.PersonageNoteFragment">
 
 
@@ -25,8 +26,9 @@
         android:id="@+id/personage_note_fragment_note"
         android:layout_width="350dp"
         android:layout_height="340dp"
-        android:layout_gravity="center"
         android:layout_marginBottom="28dp"
+        android:gravity="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/personage_note_fragment_button_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
