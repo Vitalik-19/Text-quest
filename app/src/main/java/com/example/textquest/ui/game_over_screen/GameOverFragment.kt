@@ -1,4 +1,4 @@
-package com.example.textquest
+package com.example.textquest.ui.game_over_screen
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.textquest.R
 
 
 class GameOverFragment : Fragment() {

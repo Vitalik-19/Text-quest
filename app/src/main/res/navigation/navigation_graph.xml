@@ -29,7 +29,11 @@
         android:id="@+id/personageNoteFragment"
         android:name="com.example.textquest.ui.personage_note_screen.PersonageNoteFragment"
         android:label="personage_note_fragment"
-        tools:layout="@layout/personage_note_fragment" />
+        tools:layout="@layout/personage_note_fragment" >
+        <action
+            android:id="@+id/action_personageNoteFragment_to_gamePlayFragment"
+            app:destination="@id/gamePlayFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.textquest.ui.settings_screen.SettingsFragment"
@@ -47,7 +51,7 @@
         tools:layout="@layout/game_play_fragment" />
     <fragment
         android:id="@+id/gameOverFragment"
-        android:name="com.example.textquest.GameOverFragment"
+        android:name="com.example.textquest.ui.game_over_screen.GameOverFragment"
         android:label="game_over_fragment"
         tools:layout="@layout/game_over_fragment" />
 </navigation>

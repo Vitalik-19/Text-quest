@@ -4,6 +4,7 @@
     style="@style/backgroundHomeScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.chapters_screen.ChaptersFragment">
 
     <TextView
