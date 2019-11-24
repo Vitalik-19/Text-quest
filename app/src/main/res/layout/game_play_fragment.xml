@@ -8,12 +8,65 @@
     android:padding="30dp"
     tools:context=".ui.game_play_screen.GamePlayFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="15"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/game_play_question_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Зона не терпит суеты и спешки. Каждый входящий сюда знает непреложный закон: нестись сломя голову по этим богом забытым местам – верный способ очень быстро встретить смерть. Любая тропинка здесь в итоге приводит в ловушку, будь то аномалия, берлога злобного мутанта или ещё какая-нибудь западня, рождённая изощрённой фантазией Зоны.
+
+Как раз сейчас она готовилась к очередной кровавой жатве: хотела наказать стремительно несущихся, совершенно забывших об осторожности людей, которые осмелились нарушить этот простой, но очень важный закон выживания."
+            android:textColor="#222"
+            android:textSize="24sp" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/game_play_container_answer_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:text="Game play screen"
-        android:textSize="24sp" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            style="@style/borderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="Answer1"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/borderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:text="Answer2"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/borderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:text="Answer3"
+            android:textSize="24sp" />
+    </LinearLayout>
 
 </LinearLayout>
