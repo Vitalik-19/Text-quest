@@ -24,8 +24,8 @@ class GamePlayFragment : Fragment() {
     }
 
     private lateinit var viewModel: GamePlayViewModel
-    val question: Question = PersonageData().personageData[idPersonage].questionData[idQuestion]
     var answerButtonList: ArrayList<Button> = arrayListOf()
+    val question: Question = PersonageData().personageData[idPersonage].questionData[idQuestion]
     lateinit var answerButtonContainer: LinearLayout
     lateinit var questionText: TextView
 
@@ -42,6 +42,7 @@ class GamePlayFragment : Fragment() {
 
         for (numberAnswerButton in 0..question.answerButtonData.size - 1) {
             answerButtonList.add(Button(context))
+            answerButtonList[numberAnswerButton].layoutParams = answerButtonContainer.layoutParams
             answerButtonList[numberAnswerButton].text = question.answerButtonData[numberAnswerButton].answerText
             answerButtonContainer.addView(answerButtonList[numberAnswerButton])
             answerButtonList[numberAnswerButton].setOnClickListener {
@@ -53,6 +54,7 @@ class GamePlayFragment : Fragment() {
         }
 
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

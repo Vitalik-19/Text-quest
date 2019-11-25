@@ -20,30 +20,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="25">
 
         <TextView
             android:id="@+id/personage_note_fragment_note"
+            style="@style/descriptionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fadeScrollbars="false"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:textColor="#222"
-            android:textSize="24sp"
             tools:text="Описание" />
     </ScrollView>
 
     <Button
         android:id="@+id/personage_note_fragment_button_start"
-        style="@style/borderButton"
+        style="@style/styleButton"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_weight="0"
-        android:text="@string/personage_note_fragment_button_start_text"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:text="@string/personage_note_fragment_button_start_text" />
 
 </LinearLayout>

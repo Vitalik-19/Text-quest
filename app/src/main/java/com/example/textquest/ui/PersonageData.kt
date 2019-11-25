@@ -41,18 +41,50 @@ data class PersonageData(
 
 // QuestionData
 val questionVesta: List<Question> = listOf(
-        Question("Question1", listOf(
+        Question("Question1 Vesta", listOf(
                 AnswerButtonData("answer1", 2),
                 AnswerButtonData("answer2", 3),
                 AnswerButtonData("answer3", 1)
         )),
-        Question("Question2", listOf(AnswerButtonData("answer1", 3))),
-        Question("Question3", listOf(AnswerButtonData("answer1", 1)))
+        Question("Question2 Vesta", listOf(AnswerButtonData("answer1", 3))),
+        Question("Question3 Vesta", listOf(AnswerButtonData("answer1", 1)))
 )
-val questionShram: List<Question> = listOf()
-val questionStrelok: List<Question> = listOf()
-val questionStalker: List<Question> = listOf()
-val questionVolk: List<Question> = listOf()
+val questionShram: List<Question> = listOf(
+        Question("Question1 Shram", listOf(
+                AnswerButtonData("answer1", 2),
+                AnswerButtonData("answer2", 3),
+                AnswerButtonData("answer3", 1)
+        )),
+        Question("Question2 Shram", listOf(AnswerButtonData("answer1", 3))),
+        Question("Question3 Shram", listOf(AnswerButtonData("answer1", 1)))
+)
+val questionStrelok: List<Question> = listOf(
+        Question("Question1 Strelok", listOf(
+                AnswerButtonData("answer1", 2),
+                AnswerButtonData("answer2", 3),
+                AnswerButtonData("answer3", 1)
+        )),
+        Question("Question2 Strelok", listOf(AnswerButtonData("answer1", 3))),
+        Question("Question3 Strelok", listOf(AnswerButtonData("answer1", 1)))
+)
+val questionStalker: List<Question> = listOf(
+        Question("Question1 Stalker", listOf(
+                AnswerButtonData("answer1", 2),
+                AnswerButtonData("answer2", 3),
+                AnswerButtonData("answer3", 1)
+        )),
+        Question("Question2 Stalker", listOf(AnswerButtonData("answer1", 3))),
+        Question("Question3 Stalker", listOf(AnswerButtonData("answer1", 1)))
+)
+val questionVolk: List<Question> = listOf(
+        Question("Question1 Volk", listOf(
+                AnswerButtonData("answer1", 2),
+                AnswerButtonData("answer2", 3),
+                AnswerButtonData("answer3", 1)
+        )),
+        Question("Question2 Volk", listOf(AnswerButtonData("answer1", 3))),
+        Question("Question3 Volk", listOf(AnswerButtonData("answer1", 1)))
+)
 
 data class Question(
         val questionText: String,

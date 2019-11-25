@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.textquest.R
 import com.example.textquest.ui.Personage
 import com.example.textquest.ui.idPersonage
+import com.example.textquest.ui.idQuestion
 
 class PersonageAdapter(val personage: List<Personage>) : RecyclerView.Adapter<PersonageAdapter.personageViewHolder>() {
 
@@ -34,6 +35,7 @@ class PersonageAdapter(val personage: List<Personage>) : RecyclerView.Adapter<Pe
             tag = item
             setOnClickListener {
                 idPersonage = position
+                idQuestion = 0
                 it.findNavController().navigate(R.id.action_newGameFragment_to_personageNoteFragment)
             }
         }
