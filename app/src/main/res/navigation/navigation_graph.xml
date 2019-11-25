@@ -48,7 +48,14 @@
         android:id="@+id/gamePlayFragment"
         android:name="com.example.textquest.ui.game_play_screen.GamePlayFragment"
         android:label="game_play_fragment"
-        tools:layout="@layout/game_play_fragment" />
+        tools:layout="@layout/game_play_fragment" >
+        <action
+            android:id="@+id/action_gamePlayFragment_self"
+            app:destination="@id/gamePlayFragment" />
+        <action
+            android:id="@+id/action_gamePlayFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gameOverFragment"
         android:name="com.example.textquest.ui.game_over_screen.GameOverFragment"

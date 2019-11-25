@@ -12,28 +12,36 @@
         android:id="@+id/personage_note_fragment_avatar_personage"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="2"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_weight="0"
         android:src="@mipmap/ic_launcher_round" />
 
-    <TextView
-        android:id="@+id/personage_note_fragment_note"
-        android:layout_width="350dp"
-        android:layout_height="340dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="24sp"
-        tools:text="Описание" />
+        android:layout_margin="10dp"
+        android:layout_weight="25">
+
+        <TextView
+            android:id="@+id/personage_note_fragment_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="#222"
+            android:textSize="24sp"
+            tools:text="Описание" />
+    </ScrollView>
 
     <Button
         android:id="@+id/personage_note_fragment_button_start"
         style="@style/borderButton"
         android:layout_width="220dp"
         android:layout_height="65dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="2"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_weight="0"
         android:text="@string/personage_note_fragment_button_start_text"
         android:textSize="24sp"
         android:textStyle="bold" />
