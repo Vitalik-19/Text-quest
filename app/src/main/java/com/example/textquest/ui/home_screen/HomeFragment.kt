@@ -1,16 +1,13 @@
 package com.example.textquest.ui.home_screen
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.example.textquest.MainActivity
 import com.example.textquest.R
 
 
@@ -22,6 +19,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var buttonNewGame: Button
+    private lateinit var buttonContinue: Button
     private lateinit var buttonSettings: Button
 
 

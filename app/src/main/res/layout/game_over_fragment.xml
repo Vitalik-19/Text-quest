@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.settings_screen.SettingsFragment">
+    tools:context=".ui.game_over_screen.GameOverFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/styleText"
-        android:text="Settings screen"/>
+        android:gravity="center"
+        android:text="Game Over screen"
+        android:textSize="24sp" />
 
 </LinearLayout>
