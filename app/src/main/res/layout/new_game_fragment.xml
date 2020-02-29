@@ -13,11 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="@string/new_game_fragment_title_text"
-        android:textColor="#222"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        style="@style/styleHeading"
+        android:text="@string/new_game_fragment_title_text" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_personage_list"

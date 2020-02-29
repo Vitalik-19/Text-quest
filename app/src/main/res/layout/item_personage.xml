@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/item_list_personage_button"
-        android:background="@drawable/border_black"
+        style="@style/styleItemList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -20,19 +20,17 @@
 
         <ImageView
             android:id="@+id/item_list_avatar_personage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@drawable/ic_stalker" />
 
         <TextView
             android:id="@+id/item_list_name_personage"
+            style="@style/styleTextItemList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="#222"
-            android:textSize="30sp"
             tools:text="TextView" />
 
     </LinearLayout>

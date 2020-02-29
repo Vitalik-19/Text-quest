@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/game_play_question_text"
-            style="@style/descriptionText"
+            style="@style/styleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

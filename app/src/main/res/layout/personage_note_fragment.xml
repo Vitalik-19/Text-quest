@@ -14,7 +14,7 @@
         android:layout_height="140dp"
         android:layout_gravity="center_horizontal|top"
         android:layout_weight="0"
-        android:src="@mipmap/ic_launcher_round" />
+        android:src="@drawable/ic_stalker" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/personage_note_fragment_note"
-            style="@style/descriptionText"
+            style="@style/styleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Описание" />
@@ -35,8 +35,6 @@
     <Button
         android:id="@+id/personage_note_fragment_button_start"
         style="@style/styleButton"
-        android:layout_width="220dp"
-        android:layout_height="65dp"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_weight="0"
         android:text="@string/personage_note_fragment_button_start_text" />

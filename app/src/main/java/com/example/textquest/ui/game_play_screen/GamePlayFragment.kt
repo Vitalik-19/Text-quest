@@ -48,11 +48,10 @@ class GamePlayFragment : Fragment() {
             answerButtonList[numberAnswerButton].setOnClickListener {
                 idQuestion = question.answerButtonData[numberAnswerButton].questionId - 1
                 answerButtonContainer.removeAllViews()
-
+                
                 view.findNavController().navigate(R.id.action_gamePlayFragment_self)
             }
         }
-
     }
 
 

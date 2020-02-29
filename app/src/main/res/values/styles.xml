@@ -11,19 +11,48 @@
     <style name="backgroundHomeScreen" parent="@style/AppTheme">
         <item name="android:background">@drawable/background_home_screen</item>
     </style>
-
+    <!--main button-->
     <style name="styleButton" parent="@style/AppTheme">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">220dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:textColor">@color/lightGray</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/border_black</item>
+        <item name="android:background">@drawable/border_button</item>
     </style>
-
-    <style name="descriptionText" parent="@style/AppTheme">
-        <item name="android:textColor">@color/darkGray</item>
+    <!--main heading-->
+    <style name="styleHeading" parent="@style/AppTheme">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--main text-->
+    <style name="styleText" parent="@style/AppTheme">
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">italic</item>
+        <item name="android:gravity">fill_horizontal</item>
     </style>
+
+
+    <!--border item list style-->
+    <style name="styleItemList" parent="@style/AppTheme">
+        <item name="android:background">@drawable/border_item_list</item>
+    </style>
+    <!--text item list style-->
+    <style name="styleTextItemList" parent="@style/AppTheme">
+        <item name="android:textColor">@color/lightGray</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+<!--    <style name="descriptionText" parent="@style/AppTheme">-->
+    <!--        <item name="android:textColor">@color/darkGray</item>-->
+    <!--        <item name="android:textSize">18sp</item>-->
+    <!--        <item name="android:textStyle">italic</item>-->
+    <!--    </style>-->
 
 </resources>

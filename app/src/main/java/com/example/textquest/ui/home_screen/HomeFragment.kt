@@ -19,6 +19,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var buttonNewGame: Button
+    private lateinit var buttonContinue: Button
     private lateinit var buttonSettings: Button
 
 

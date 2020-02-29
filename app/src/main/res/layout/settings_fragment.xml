@@ -10,8 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Settings screen"
-        android:textSize="24dp" />
+        style="@style/styleText"
+        android:text="Settings screen"/>
 
 </LinearLayout>
