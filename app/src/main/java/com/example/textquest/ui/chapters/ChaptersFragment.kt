@@ -1,4 +1,4 @@
-package com.example.textquest.ui.chapters_screen
+package com.example.textquest.ui.chapters
 
 import android.os.Bundle
 import android.view.LayoutInflater

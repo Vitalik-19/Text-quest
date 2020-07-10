@@ -1,4 +1,4 @@
-package com.example.textquest.ui.game_over_screen
+package com.example.textquest.ui.gameOver
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.example.textquest.ui.personage_note_screen
+package com.example.textquest.ui.personageNote
 
 import androidx.lifecycle.ViewModel
 
