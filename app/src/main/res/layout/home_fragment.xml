@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/backgroundHomeScreen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".ui.home_screen.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/home_fragment_button_settings"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/ic_settings" />
+    <data>
 
-    <ImageView
-        android:id="@+id/home_fragment_image_logo_game"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:src="@drawable/ic_stalker" />
+        <variable
+            name="homeViewModel"
+            type="com.example.textquest.ui.home.HomeViewModel" />
+    </data>
 
-    <Space
+    <LinearLayout
+        style="@style/backgroundHomeScreen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".ui.home.HomeFragment">
 
-    <Button
-        android:id="@+id/home_fragment_button_new_game"
-        style="@style/styleButton"
-        android:layout_gravity="center"
-        android:layout_marginBottom="80dp"
-        android:layout_weight="0"
-        android:text="@string/home_fragment_button_new_game_text" />
+        <Button
+            android:id="@+id/home_fragment_button_settings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_settings" />
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/home_fragment_image_logo_game"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:src="@drawable/ic_stalker" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/home_fragment_button_new_game"
+            style="@style/styleButton"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
+            android:layout_weight="0"
+            android:text="@string/home_fragment_button_new_game_text" />
+
+    </LinearLayout>
+</layout>

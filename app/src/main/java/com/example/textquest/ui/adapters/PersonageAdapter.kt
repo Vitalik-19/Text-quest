@@ -1,4 +1,4 @@
-package com.example.textquest.ui.new_game_screen
+package com.example.textquest.ui.newGame
 
 import android.view.LayoutInflater
 import android.view.View

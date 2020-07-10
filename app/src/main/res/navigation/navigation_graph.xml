@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.textquest.ui.home_screen.HomeFragment"
+        android:name="com.example.textquest.ui.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/newGameFragment"
-        android:name="com.example.textquest.ui.new_game_screen.NewGameFragment"
+        android:name="com.example.textquest.ui.newGame.NewGameFragment"
         android:label="new_game_fragment"
         tools:layout="@layout/new_game_fragment" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/personageNoteFragment"
-        android:name="com.example.textquest.ui.personage_note_screen.PersonageNoteFragment"
+        android:name="com.example.textquest.ui.personageNote.PersonageNoteFragment"
         android:label="personage_note_fragment"
         tools:layout="@layout/personage_note_fragment" >
         <action
@@ -36,17 +36,17 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.textquest.ui.settings_screen.SettingsFragment"
+        android:name="com.example.textquest.ui.settings.SettingsFragment"
         android:label="settings_fragment"
         tools:layout="@layout/settings_fragment" />
     <fragment
         android:id="@+id/chaptersFragment"
-        android:name="com.example.textquest.ui.chapters_screen.ChaptersFragment"
+        android:name="com.example.textquest.ui.chapters.ChaptersFragment"
         android:label="chapters_fragment"
         tools:layout="@layout/chapters_fragment" />
     <fragment
         android:id="@+id/gamePlayFragment"
-        android:name="com.example.textquest.ui.game_play_screen.GamePlayFragment"
+        android:name="com.example.textquest.ui.gamePlay.GamePlayFragment"
         android:label="game_play_fragment"
         tools:layout="@layout/game_play_fragment" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameOverFragment"
-        android:name="com.example.textquest.ui.game_over_screen.GameOverFragment"
+        android:name="com.example.textquest.ui.gameOver.GameOverFragment"
         android:label="game_over_fragment"
         tools:layout="@layout/game_over_fragment" />
 </navigation>

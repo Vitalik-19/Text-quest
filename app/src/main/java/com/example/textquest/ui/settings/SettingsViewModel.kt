@@ -1,4 +1,4 @@
-package com.example.textquest.ui.settings_screen
+package com.example.textquest.ui.settings
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.example.textquest.ui.game_play_screen
+package com.example.textquest.ui.gamePlay
 
 import androidx.lifecycle.ViewModel
 

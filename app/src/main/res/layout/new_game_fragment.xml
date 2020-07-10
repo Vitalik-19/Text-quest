@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/backgroundHomeScreen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp"
-    tools:context=".ui.new_game_screen.NewGameFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/new_game_fragment_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        style="@style/styleHeading"
-        android:text="@string/new_game_fragment_title_text" />
+    <data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_personage_list"
+        <variable
+            name="newGameViewModel"
+            type="com.example.textquest.ui.newGame.NewGameViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/backgroundHomeScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_personage" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".ui.newGame.NewGameFragment">
+
+        <TextView
+            android:id="@+id/new_game_fragment_title"
+            style="@style/styleHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/new_game_fragment_title_text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_personage_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_personage" />
+    </LinearLayout>
+</layout>

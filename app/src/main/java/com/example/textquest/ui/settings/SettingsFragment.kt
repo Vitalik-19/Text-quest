@@ -1,11 +1,11 @@
-package com.example.textquest.ui.settings_screen
+package com.example.textquest.ui.settings
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.textquest.R
 
 
@@ -17,10 +17,8 @@ class SettingsFragment : Fragment() {
 
     private lateinit var viewModel: SettingsViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        //TODO: Added data binding
         return inflater.inflate(R.layout.settings_fragment, container, false)
     }
 
