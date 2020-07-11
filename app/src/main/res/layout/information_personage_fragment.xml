@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="personageNoteViewModel"
-            type="com.example.textquest.ui.personageNote.PersonageNoteViewModel" />
+            name="informationPersonageViewModel"
+            type="com.example.textquest.ui.informationPersonage.InformationPersonageViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
-        tools:context=".ui.personageNote.PersonageNoteFragment">
+        tools:context=".ui.informationPersonage.InformationPersonageFragment">
 
         <ImageView
             android:id="@+id/personage_note_fragment_avatar_personage"
@@ -38,6 +38,7 @@
                 style="@style/styleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@{informationPersonageViewModel.personage.descriptionPersonage}"
                 tools:text="Описание" />
         </ScrollView>
 

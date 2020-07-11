@@ -22,17 +22,17 @@
         android:label="@string/personage_note_fragment_button_start_text"
         tools:layout="@layout/personage_fragment">
         <action
-            android:id="@+id/action_newGameFragment_to_personageNoteFragment"
-            app:destination="@id/personageNoteFragment" />
+            android:id="@+id/action_personageFragment_to_informationPersonageFragment"
+            app:destination="@id/informationPersonageFragment" />
         <action
-            android:id="@+id/action_newGameFragment_to_chaptersFragment"
+            android:id="@+id/action_personageFragment_to_chaptersFragment"
             app:destination="@id/chaptersFragment" />
     </fragment>
     <fragment
-        android:id="@+id/personageNoteFragment"
-        android:name="com.example.textquest.ui.personageNote.PersonageNoteFragment"
-        android:label="personage_note_fragment"
-        tools:layout="@layout/personage_note_fragment" />
+        android:id="@+id/informationPersonageFragment"
+        android:name="com.example.textquest.ui.informationPersonage.InformationPersonageFragment"
+        android:label="information_personage_fragment"
+        tools:layout="@layout/information_personage_fragment" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.textquest.ui.settings.SettingsFragment"
