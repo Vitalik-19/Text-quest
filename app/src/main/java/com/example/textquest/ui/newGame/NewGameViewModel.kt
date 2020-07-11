@@ -1,7 +1,30 @@
 package com.example.textquest.ui.newGame
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import com.example.textquest.database.AppDatabaseDao
 
-class NewGameViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class NewGameViewModel(val database: AppDatabaseDao, application: Application) : AndroidViewModel(application) {
+
+//    private var viewModelJob = Job()
+//
+//    override fun onCleared() {
+//        super.onCleared()
+//        viewModelJob.cancel()
+//    }
+//
+//    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+//
+//    private fun initializePersonage() {
+//        uiScope.launch {
+//
+//        }
+//    }
+//
+//    private suspend fun getCreateAdvertFromDatabase(key: Long): Personage? {
+//        return withContext(Dispatchers.IO) {
+//            val personage = database.get(key)
+//            personage
+//        }
+//    }
 }

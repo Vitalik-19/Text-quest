@@ -8,15 +8,18 @@ import androidx.room.Update
 @Dao
 public interface AppDatabaseDao {
 
-    // Добавление advert в бд
+    // Добавление personage в бд
     @Insert
     fun insert(personage: Personage)
 
-    // Удаление advert из бд
+    // Удаление personage из бд
     @Query("DELETE FROM Personage WHERE idPersonage = :key")
     fun clear(key: Long)
 
-    // Обновление advert в бд
+    // Обновление personage в бд
     @Update
     fun update(personage: Personage)
+
+    @Query("SELECT * from Personage WHERE idPersonage = :key")
+    fun get(key: Long): Personage?
 }
