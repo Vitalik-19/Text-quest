@@ -6,7 +6,7 @@
     <string name="home_fragment_button_continue_text">Продолжить</string>
     <string name="home_fragment_button_new_game_text">Новая игра</string>
 
-    <!--strings new_game_fragment-->
+    <!--strings personage_fragment-->
     <string name="new_game_fragment_title_text">Выбери персонажа</string>
    
     <!--strings personage_note_fragment-->

@@ -41,12 +41,5 @@
                 tools:text="Описание" />
         </ScrollView>
 
-        <Button
-            android:id="@+id/personage_note_fragment_button_start"
-            style="@style/styleButton"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_weight="0"
-            android:text="@string/personage_note_fragment_button_start_text" />
-
     </LinearLayout>
 </layout>
