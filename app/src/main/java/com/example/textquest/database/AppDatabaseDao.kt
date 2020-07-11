@@ -1,5 +1,6 @@
 package com.example.textquest.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -19,6 +20,9 @@ public interface AppDatabaseDao {
     // Обновление personage в бд
     @Update
     fun update(personage: Personage)
+
+    @Query("SELECT * from Personage")
+    fun getPersonages(): LiveData<List<Personage>>
 
     @Query("SELECT * from Personage WHERE idPersonage = :key")
     fun get(key: Long): Personage?

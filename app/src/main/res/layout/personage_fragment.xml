@@ -6,7 +6,7 @@
 
         <variable
             name="newGameViewModel"
-            type="com.example.textquest.ui.newGame.NewGameViewModel" />
+            type="com.example.textquest.ui.personage.PersonageViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
-        tools:context=".ui.newGame.NewGameFragment">
+        tools:context=".ui.personage.PersonageFragment">
 
         <TextView
             android:id="@+id/new_game_fragment_title"

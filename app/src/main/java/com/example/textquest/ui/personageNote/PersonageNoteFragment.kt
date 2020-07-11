@@ -10,10 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.textquest.R
 import com.example.textquest.databinding.PersonageNoteFragmentBinding
-import com.example.textquest.ui.Personage
-import com.example.textquest.ui.PersonageData
-import com.example.textquest.ui.idPersonage
-
 
 class PersonageNoteFragment : Fragment() {
 
@@ -24,7 +20,7 @@ class PersonageNoteFragment : Fragment() {
     private lateinit var viewModel: PersonageNoteViewModel
     private lateinit var binding: PersonageNoteFragmentBinding
 
-    private val personage: List<Personage> = PersonageData().personageData
+//    private val personage: List<Personage> = PersonageData().personageData
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.personage_note_fragment, container, false)
@@ -35,11 +31,9 @@ class PersonageNoteFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.personageNoteFragmentButtonStart.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_personageNoteFragment_to_gamePlayFragment))
 
-        val item = personage[idPersonage]
+//        val item = personage[idPersonage]
 
-        binding.personageNoteFragmentNote.text = item.description
+//        binding.personageNoteFragmentNote.text = item.description
     }
 }

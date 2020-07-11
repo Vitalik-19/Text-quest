@@ -9,14 +9,8 @@ import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import com.example.textquest.R
 import com.example.textquest.databinding.GamePlayFragmentBinding
-import com.example.textquest.ui.PersonageData
-import com.example.textquest.ui.Question
-import com.example.textquest.ui.idPersonage
-import com.example.textquest.ui.idQuestion
-
 
 class GamePlayFragment : Fragment() {
 
@@ -28,7 +22,8 @@ class GamePlayFragment : Fragment() {
     private lateinit var binding: GamePlayFragmentBinding
 
     var answerButtonList: ArrayList<Button> = arrayListOf()
-    private val question: Question = PersonageData().personageData[idPersonage].questionData[idQuestion]
+
+    //    private val question: Question = PersonageData().personageData[idPersonage].questionData[idQuestion]
     lateinit var answerButtonContainer: LinearLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,19 +36,19 @@ class GamePlayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         answerButtonContainer = binding.gamePlayContainerAnswerButton
-        binding.gamePlayQuestionText.text = question.questionText
+//        binding.gamePlayQuestionText.text = question.questionText
 
-        for (numberAnswerButton in 0..question.answerButtonData.size - 1) {
-            answerButtonList.add(Button(context))
-            answerButtonList[numberAnswerButton].layoutParams = answerButtonContainer.layoutParams
-            answerButtonList[numberAnswerButton].text = question.answerButtonData[numberAnswerButton].answerText
-            answerButtonContainer.addView(answerButtonList[numberAnswerButton])
-            answerButtonList[numberAnswerButton].setOnClickListener {
-                idQuestion = question.answerButtonData[numberAnswerButton].questionId - 1
-                answerButtonContainer.removeAllViews()
-
-                view.findNavController().navigate(R.id.action_gamePlayFragment_self)
-            }
-        }
+//        for (numberAnswerButton in 0..question.answerButtonData.size - 1) {
+//            answerButtonList.add(Button(context))
+//            answerButtonList[numberAnswerButton].layoutParams = answerButtonContainer.layoutParams
+//            answerButtonList[numberAnswerButton].text = question.answerButtonData[numberAnswerButton].answerText
+//            answerButtonContainer.addView(answerButtonList[numberAnswerButton])
+//            answerButtonList[numberAnswerButton].setOnClickListener {
+////                idQuestion = question.answerButtonData[numberAnswerButton].questionId - 1
+//                answerButtonContainer.removeAllViews()
+//
+//                view.findNavController().navigate(R.id.action_gamePlayFragment_self)
+//            }
+//        }
     }
 }

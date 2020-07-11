@@ -21,7 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                             context.applicationContext, AppDatabase::class.java, "database.db")
-//                            .createFromAsset("database/App.db")
+                            .createFromAsset("database/database.db")
                             .fallbackToDestructiveMigration()
                             .build()
                     INSTANCE = instance

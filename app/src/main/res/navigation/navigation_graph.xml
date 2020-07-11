@@ -11,29 +11,28 @@
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_newGameFragment"
-            app:destination="@id/newGameFragment" />
+            app:destination="@id/personageFragment" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/newGameFragment"
-        android:name="com.example.textquest.ui.newGame.NewGameFragment"
-        android:label="new_game_fragment"
-        tools:layout="@layout/new_game_fragment" >
+        android:id="@+id/personageFragment"
+        android:name="com.example.textquest.ui.personage.PersonageFragment"
+        android:label="@string/personage_note_fragment_button_start_text"
+        tools:layout="@layout/personage_fragment">
         <action
             android:id="@+id/action_newGameFragment_to_personageNoteFragment"
             app:destination="@id/personageNoteFragment" />
+        <action
+            android:id="@+id/action_newGameFragment_to_chaptersFragment"
+            app:destination="@id/chaptersFragment" />
     </fragment>
     <fragment
         android:id="@+id/personageNoteFragment"
         android:name="com.example.textquest.ui.personageNote.PersonageNoteFragment"
         android:label="personage_note_fragment"
-        tools:layout="@layout/personage_note_fragment" >
-        <action
-            android:id="@+id/action_personageNoteFragment_to_gamePlayFragment"
-            app:destination="@id/gamePlayFragment" />
-    </fragment>
+        tools:layout="@layout/personage_note_fragment" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.textquest.ui.settings.SettingsFragment"
@@ -43,7 +42,11 @@
         android:id="@+id/chaptersFragment"
         android:name="com.example.textquest.ui.chapters.ChaptersFragment"
         android:label="chapters_fragment"
-        tools:layout="@layout/chapters_fragment" />
+        tools:layout="@layout/chapters_fragment" >
+        <action
+            android:id="@+id/action_chaptersFragment_to_gamePlayFragment"
+            app:destination="@id/gamePlayFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gamePlayFragment"
         android:name="com.example.textquest.ui.gamePlay.GamePlayFragment"

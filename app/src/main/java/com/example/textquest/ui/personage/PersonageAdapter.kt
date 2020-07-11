@@ -1,19 +1,16 @@
-package com.example.textquest.ui.newGame
+package com.example.textquest.ui.personage
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.textquest.R
 import com.example.textquest.database.Personage
-import com.example.textquest.ui.idPersonage
-import com.example.textquest.ui.idQuestion
 
-class NewGameAdapter : RecyclerView.Adapter<NewGameAdapter.NewGameViewHolder>() {
-    var data = ArrayList<Personage>()
+class PersonageAdapter : RecyclerView.Adapter<PersonageAdapter.NewGameViewHolder>() {
+    var data = listOf<Personage>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -25,26 +22,24 @@ class NewGameAdapter : RecyclerView.Adapter<NewGameAdapter.NewGameViewHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewGameViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_personage, parent, false)
-        return NewGameAdapter.NewGameViewHolder(view)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_personage, parent, false)
+        return PersonageAdapter.NewGameViewHolder(view)
     }
 
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: NewGameViewHolder, position: Int) {
-        val item = data[position]
-        holder.namePersonage.text = item.firstNamePersonage
 
-        with(holder.personageButton) {
-            tag = item
-            setOnClickListener {
-                idPersonage = position
-                idQuestion = 0
-                it.findNavController()
-                    .navigate(R.id.action_newGameFragment_to_personageNoteFragment)
-            }
-        }
+        holder.namePersonage.text = data[position].firstNamePersonage
+
+//        with(holder.personageButton) {
+//            tag = data[position]
+//            setOnClickListener {
+//                idPersonage = position
+//                idQuestion = 0
+//                it.findNavController().navigate(R.id.action_newGameFragment_to_personageNoteFragment)
+//            }
+//        }
     }
 
 }
