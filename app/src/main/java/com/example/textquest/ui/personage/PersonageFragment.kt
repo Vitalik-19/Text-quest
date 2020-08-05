@@ -34,16 +34,9 @@ class PersonageFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel.personages.observe(viewLifecycleOwner, Observer {
-            adapter.data = it
+            adapter.submitList(it)
         })
+        
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//
-//        val personageData: List<Personage> = PersonageData().personageData
-//
-//        recycler_view_personage_list.layoutManager = LinearLayoutManager(Fragment().context)
-//        recycler_view_personage_list.adapter = PersonageAdapter(personageData)
-//    }
 }
