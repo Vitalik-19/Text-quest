@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_chaptersFragment_to_gamePlayFragment"
             app:destination="@id/gamePlayFragment" />
+        <argument
+            android:name="personageKey"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/gamePlayFragment"

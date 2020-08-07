@@ -8,12 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.textquest.R
 import com.example.textquest.database.AppDatabase
-import com.example.textquest.databinding.InformationPersonageFragmentBindingImpl
 import com.example.textquest.databinding.PersonageFragmentBinding
 
 
@@ -34,14 +32,20 @@ class PersonageFragment : Fragment() {
 
         viewModel.navigateToInformationPersonage.observe(viewLifecycleOwner, Observer {
             it?.let {
-                this.findNavController().navigate(PersonageFragmentDirections.
-                actionPersonageFragmentToInformationPersonageFragment(it))
+                this.findNavController().navigate(PersonageFragmentDirections.actionPersonageFragmentToInformationPersonageFragment(it))
                 viewModel.onInformationPersonageNavigated()
             }
         })
+        viewModel.navigateToChapters.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(
+                        PersonageFragmentDirections.actionPersonageFragmentToChaptersFragment(it))
+                viewModel.onChaptersNavigated()
+            }
+        })
 
-        adapter = PersonageAdapter(PersonageListener { idPersonage ->
-            viewModel.onPersonageClicked(idPersonage)
+        adapter = PersonageAdapter(PersonageListener { buttonId, personageId ->
+            viewModel.onPersonageClicked(buttonId, personageId)
         })
 
         binding.recyclerViewPersonageList.adapter = adapter

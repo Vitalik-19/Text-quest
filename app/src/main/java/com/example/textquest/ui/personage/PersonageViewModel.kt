@@ -13,11 +13,22 @@ class PersonageViewModel(val database: AppDatabaseDao, application: Application)
     val navigateToInformationPersonage
         get() = _navigateToInformationPersonage
 
-    fun onPersonageClicked(id: Long) {
-        _navigateToInformationPersonage.value = id
+    private val _navigateToChapters = MutableLiveData<Long>()
+    val navigateToChapters
+        get() = _navigateToChapters
+
+    fun onPersonageClicked(buttonId: Int, personageId: Long) {
+        when (buttonId) {
+            0 -> _navigateToChapters.value = personageId
+            1 -> _navigateToInformationPersonage.value = personageId
+        }
     }
 
     fun onInformationPersonageNavigated() {
         _navigateToInformationPersonage.value = null
+    }
+
+    fun onChaptersNavigated() {
+        _navigateToChapters.value = null
     }
 }
