@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.textquest.R
 import com.example.textquest.database.AppDatabase
@@ -26,24 +27,35 @@ class PersonageFragment : Fragment() {
         val dataSource = AppDatabase.getInstance(application).appDatabaseDao
         val viewModelFactory = PersonageViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(PersonageViewModel::class.java)
+
         binding.newGameViewModel = viewModel
-        adapter = PersonageAdapter()
+
+        viewModel.navigateToInformationPersonage.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(PersonageFragmentDirections.actionPersonageFragmentToInformationPersonageFragment(it))
+                viewModel.onInformationPersonageNavigated()
+            }
+        })
+        viewModel.navigateToChapters.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(
+                        PersonageFragmentDirections.actionPersonageFragmentToChaptersFragment(it))
+                viewModel.onChaptersNavigated()
+            }
+        })
+
+        adapter = PersonageAdapter(PersonageListener { buttonId, personageId ->
+            viewModel.onPersonageClicked(buttonId, personageId)
+        })
 
         binding.recyclerViewPersonageList.adapter = adapter
         binding.recyclerViewPersonageList.layoutManager = LinearLayoutManager(Fragment().context)
         binding.lifecycleOwner = this
 
         viewModel.personages.observe(viewLifecycleOwner, Observer {
-            adapter.data = it
+            adapter.submitList(it)
         })
+
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//
-//        val personageData: List<Personage> = PersonageData().personageData
-//
-//        recycler_view_personage_list.layoutManager = LinearLayoutManager(Fragment().context)
-//        recycler_view_personage_list.adapter = PersonageAdapter(personageData)
-//    }
 }

@@ -2,33 +2,33 @@ package com.example.textquest.ui.personage
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.example.textquest.database.AppDatabaseDao
-import com.example.textquest.database.Personage
-import kotlinx.coroutines.*
 
 class PersonageViewModel(val database: AppDatabaseDao, application: Application) : AndroidViewModel(application) {
 
-    private var viewModelJob = Job()
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
-
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
     val personages = database.getPersonages()
 
-    private fun initializePersonage() {
-        uiScope.launch {
+    private val _navigateToInformationPersonage = MutableLiveData<Long>()
+    val navigateToInformationPersonage
+        get() = _navigateToInformationPersonage
 
+    private val _navigateToChapters = MutableLiveData<Long>()
+    val navigateToChapters
+        get() = _navigateToChapters
+
+    fun onPersonageClicked(buttonId: Int, personageId: Long) {
+        when (buttonId) {
+            0 -> _navigateToChapters.value = personageId
+            1 -> _navigateToInformationPersonage.value = personageId
         }
     }
 
-    private suspend fun getCreateAdvertFromDatabase(key: Long): Personage? {
-        return withContext(Dispatchers.IO) {
-            val personage = database.get(key)
-            personage
-        }
+    fun onInformationPersonageNavigated() {
+        _navigateToInformationPersonage.value = null
+    }
+
+    fun onChaptersNavigated() {
+        _navigateToChapters.value = null
     }
 }
