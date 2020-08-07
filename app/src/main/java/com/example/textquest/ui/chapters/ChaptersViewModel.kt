@@ -1,7 +1,9 @@
 package com.example.textquest.ui.chapters
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import com.example.textquest.database.AppDatabaseDao
 
-class ChaptersViewModel : ViewModel() {
+class ChaptersViewModel(val database: AppDatabaseDao, application: Application) : AndroidViewModel(application) {
     // TODO: Implement the ViewModel
 }
