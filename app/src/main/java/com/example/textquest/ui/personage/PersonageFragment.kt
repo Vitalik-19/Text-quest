@@ -8,9 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.textquest.R
 import com.example.textquest.database.AppDatabase
+import com.example.textquest.databinding.InformationPersonageFragmentBindingImpl
 import com.example.textquest.databinding.PersonageFragmentBinding
 
 
@@ -26,8 +29,20 @@ class PersonageFragment : Fragment() {
         val dataSource = AppDatabase.getInstance(application).appDatabaseDao
         val viewModelFactory = PersonageViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(PersonageViewModel::class.java)
+
         binding.newGameViewModel = viewModel
-        adapter = PersonageAdapter()
+
+        viewModel.navigateToInformationPersonage.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(PersonageFragmentDirections.
+                actionPersonageFragmentToInformationPersonageFragment(it))
+                viewModel.onInformationPersonageNavigated()
+            }
+        })
+
+        adapter = PersonageAdapter(PersonageListener { idPersonage ->
+            viewModel.onPersonageClicked(idPersonage)
+        })
 
         binding.recyclerViewPersonageList.adapter = adapter
         binding.recyclerViewPersonageList.layoutManager = LinearLayoutManager(Fragment().context)
@@ -36,7 +51,7 @@ class PersonageFragment : Fragment() {
         viewModel.personages.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
-        
+
         return binding.root
     }
 }

@@ -22,6 +22,7 @@ class InformationPersonageFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.information_personage_fragment, container, false)
 
+        val arguments = InformationPersonageFragmentArgs.fromBundle(requireArguments())
         val application = requireNotNull(this.activity).application
         val dataSource = AppDatabase.getInstance(application).appDatabaseDao
         val viewModelFactory = InformationPersonageViewModelFactory(dataSource, application)
@@ -29,7 +30,7 @@ class InformationPersonageFragment : Fragment() {
         binding.informationPersonageViewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.initializePersonage(requireArguments().getLong("key"))
+        viewModel.initializePersonage(arguments.personageKey)
 
         return binding.root
     }

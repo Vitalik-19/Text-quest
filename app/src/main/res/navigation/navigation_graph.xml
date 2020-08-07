@@ -32,7 +32,11 @@
         android:id="@+id/informationPersonageFragment"
         android:name="com.example.textquest.ui.informationPersonage.InformationPersonageFragment"
         android:label="information_personage_fragment"
-        tools:layout="@layout/information_personage_fragment" />
+        tools:layout="@layout/information_personage_fragment" >
+        <argument
+            android:name="personageKey"
+            app:argType="long" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.textquest.ui.settings.SettingsFragment"
