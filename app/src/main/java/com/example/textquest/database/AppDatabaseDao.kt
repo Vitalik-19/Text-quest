@@ -14,7 +14,7 @@ public interface AppDatabaseDao {
     fun insert(personage: Personage)
 
     // Удаление personage из бд
-    @Query("DELETE FROM Personage WHERE idPersonage = :key")
+    @Query("DELETE FROM Personage WHERE personageId = :key")
     fun clear(key: Long)
 
     // Обновление personage в бд
@@ -24,6 +24,6 @@ public interface AppDatabaseDao {
     @Query("SELECT * from Personage")
     fun getPersonages(): LiveData<List<Personage>>
 
-    @Query("SELECT * from Personage WHERE idPersonage = :key")
+    @Query("SELECT * from Personage WHERE personageId = :key")
     fun get(key: Long): Personage?
 }

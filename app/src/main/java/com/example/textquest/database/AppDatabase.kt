@@ -4,11 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Personage::class], version = 1, exportSchema = true)
+@Database(entities = [Personage::class, Chapter::class], version = 3, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val appDatabaseDao: AppDatabaseDao
+
 
     companion object {
         @Volatile
@@ -16,13 +19,26 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): AppDatabase {
 
+            val MIGRATION_1_2 = object : Migration(1, 2) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL("CREATE TABLE Chapter(chapterId INTEGER PRIMARY KEY NOT NULL DEFAULT 0 )")
+                }
+            }
+
+            val MIGRATION_2_3 = object : Migration(2, 3) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL("ALTER TABLE Chapter ADD COLUMN nameChapter TEXT NOT NULL DEFAULT ''")
+                }
+            }
+
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                             context.applicationContext, AppDatabase::class.java, "database.db")
                             .createFromAsset("database/database.db")
-                            .fallbackToDestructiveMigration()
+                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+//                            .fallbackToDestructiveMigration()
                             .build()
                     INSTANCE = instance
                 }

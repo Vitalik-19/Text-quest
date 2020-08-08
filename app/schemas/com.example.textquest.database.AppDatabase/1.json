@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "02fd7ed2d1a25cf267f09ec877ccb4d5",
+    "entities": [
+      {
+        "tableName": "Personage",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`personageId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `firstNamePersonage` TEXT NOT NULL, `descriptionPersonage` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "personageId",
+            "columnName": "personageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstNamePersonage",
+            "columnName": "firstNamePersonage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descriptionPersonage",
+            "columnName": "descriptionPersonage",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "personageId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '02fd7ed2d1a25cf267f09ec877ccb4d5')"
+    ]
+  }
+}

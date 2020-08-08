@@ -1,0 +1,72 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "4f1ce69f29b4cea2505c663027970c4e",
+    "entities": [
+      {
+        "tableName": "Personage",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`personageId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `firstNamePersonage` TEXT NOT NULL, `descriptionPersonage` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "personageId",
+            "columnName": "personageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstNamePersonage",
+            "columnName": "firstNamePersonage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descriptionPersonage",
+            "columnName": "descriptionPersonage",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "personageId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Chapter",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`chapterId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nameChapter` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "chapterId",
+            "columnName": "chapterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameChapter",
+            "columnName": "nameChapter",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "chapterId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4f1ce69f29b4cea2505c663027970c4e')"
+    ]
+  }
+}
