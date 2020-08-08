@@ -21,6 +21,20 @@ data class Chapter(
         val ownerId: Long = 0
 )
 
+@Entity
+data class GamePlay(
+        @PrimaryKey(autoGenerate = true)
+        val gamePlayId: Long = 0,
+        val textStory: String = "",
+        val ownerId: Long = 0
+//        val answer: Answer
+)
+
+data class Answer(
+        val answerId: Long = 0,
+        val textAnswer: String = ""
+)
+
 data class PersonageWithChapters(
         @Embedded val personage: Personage,
         @Relation(
@@ -28,4 +42,13 @@ data class PersonageWithChapters(
                 entity = Chapter::class,
                 entityColumn = "ownerId")
         val chapters: List<Chapter>
+)
+
+data class ChapterWithGamePlays(
+        @Embedded val chapter: Chapter,
+        @Relation(
+                parentColumn = "chapterId",
+                entity = GamePlay::class,
+                entityColumn = "ownerId")
+        val gamePlays: List<GamePlay>
 )

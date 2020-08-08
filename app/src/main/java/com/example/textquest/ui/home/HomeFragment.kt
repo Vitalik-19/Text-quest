@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -31,6 +32,9 @@ class HomeFragment : Fragment() {
                     Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_newGameFragment))
             homeFragmentButtonSettings.setOnClickListener(
                     Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_settingsFragment))
+            homeFragmentButtonInfo.setOnClickListener {
+                Toast.makeText(context, "not implemented yet", Toast.LENGTH_LONG).show()
+            }
         }
 
         return binding.root

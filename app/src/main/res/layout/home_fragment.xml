@@ -75,7 +75,7 @@
             app:layout_constraintEnd_toEndOf="@+id/home_fragment_image_logo_game"
             app:layout_constraintStart_toStartOf="@+id/home_fragment_image_logo_game"
             app:layout_constraintTop_toBottomOf="@+id/home_fragment_image_logo_game"
-            app:layout_constraintVertical_bias="0.833" />
+            app:layout_constraintVertical_bias="0.75" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
