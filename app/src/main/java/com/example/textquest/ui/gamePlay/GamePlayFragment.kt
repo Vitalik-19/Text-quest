@@ -8,8 +8,9 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.textquest.R
+import com.example.textquest.database.AppDatabase
 import com.example.textquest.databinding.GamePlayFragmentBinding
 
 class GamePlayFragment : Fragment() {
@@ -18,7 +19,6 @@ class GamePlayFragment : Fragment() {
         fun newInstance() = GamePlayFragment()
     }
 
-    private lateinit var viewModel: GamePlayViewModel
     private lateinit var binding: GamePlayFragmentBinding
 
     var answerButtonList: ArrayList<Button> = arrayListOf()
@@ -27,8 +27,15 @@ class GamePlayFragment : Fragment() {
     lateinit var answerButtonContainer: LinearLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        val arguments = GamePlayFragmentArgs.fromBundle(requireArguments())
+        val application = requireNotNull(this.activity).application
+        val dataSource = AppDatabase.getInstance(application).appDatabaseDao
+        val viewModelFactory = GamePlayViewModelFactory(dataSource, application)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(GamePlayViewModel::class.java)
+
         binding = DataBindingUtil.inflate(inflater, R.layout.game_play_fragment, container, false)
-        viewModel = ViewModelProviders.of(this).get(GamePlayViewModel::class.java)
+        binding.gamePlayViewModel = viewModel
         binding.lifecycleOwner = this
 
         return binding.root
