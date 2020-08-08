@@ -1,48 +1,50 @@
 package com.example.textquest.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
-public interface AppDatabaseDao {
+public abstract class AppDatabaseDao {
 
     //implemented for Personage entity
 
     // Добавление personage в бд
     @Insert
-    fun insert(personage: Personage)
+    abstract fun insert(personage: Personage)
 
     // Удаление personage из бд
     @Query("DELETE FROM Personage WHERE personageId = :key")
-    fun clearPersonage(key: Long)
+    abstract fun clearPersonage(key: Long)
 
     // Обновление personage в бд
     @Update
-    fun update(personage: Personage)
+    abstract  fun update(personage: Personage)
 
     @Query("SELECT * from Personage")
-    fun getPersonages(): LiveData<List<Personage>>
+    abstract fun getPersonages(): LiveData<List<Personage>>
 
     @Query("SELECT * from Personage WHERE personageId = :key")
-    fun getPersonage(key: Long): Personage?
+    abstract  fun getPersonage(key: Long): Personage?
 
     //implemented for Chapter entity
     @Insert
-    fun insert(chapter: Chapter)
+    abstract  fun insert(chapter: Chapter)
 
     @Query("DELETE FROM Chapter WHERE chapterId = :key")
-    fun clearChapter(key: Long)
+    abstract fun clearChapter(key: Long)
 
     @Update
-    fun update(chapter: Chapter)
+    abstract  fun update(chapter: Chapter)
 
     @Query("SELECT * from Chapter")
-    fun getChapters(): LiveData<List<Chapter>>
+    abstract  fun getChapters(): LiveData<List<Chapter>>
 
     @Query("SELECT * from Chapter WHERE chapterId = :key")
-    fun getChapter(key: Long): Chapter?
+    abstract  fun getChapter(key: Long): Chapter?
+
+    //    Entity linking
+    @Transaction
+    @Query("SELECT * FROM Personage WHERE personageId = :key")
+    abstract fun getPersonageWithChapters(key: Long): PersonageWithChapters?
 
 }
