@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.textquest.database.Chapter
 import com.example.textquest.databinding.ItemChapterBinding
 
-class ChaptersAdapter : ListAdapter<Chapter, ChaptersAdapter.ViewHolder>(ChaptersDiffCallback()) {
+class ChaptersAdapter(val clickListener: ChapterListener) : ListAdapter<Chapter, ChaptersAdapter.ViewHolder>(ChaptersDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -16,14 +16,15 @@ class ChaptersAdapter : ListAdapter<Chapter, ChaptersAdapter.ViewHolder>(Chapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(clickListener, item)
     }
 
     class ViewHolder(val binding: ItemChapterBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Chapter) {
-            binding.chaptersNumber.text = "Chapter ${item.chapterId}"
-            binding.chaptersName.text = item.nameChapter
+        fun bind(clickListener: ChapterListener, item: Chapter) {
+            binding.chapter = item
+            binding.clickListener = clickListener
+            binding.executePendingBindings()
         }
 
         companion object {
@@ -46,5 +47,8 @@ class ChaptersDiffCallback : DiffUtil.ItemCallback<Chapter>() {
     override fun areContentsTheSame(oldItem: Chapter, newItem: Chapter): Boolean {
         return oldItem == newItem
     }
+}
 
+class ChapterListener(val clickListener: (chapterId: Long) -> Unit) {
+    fun onClick(chapter: Chapter) = clickListener(chapter.chapterId)
 }

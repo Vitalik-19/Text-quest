@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="chapter"
             type="com.example.textquest.database.Chapter" />
+
+        <variable
+            name="clickListener"
+            type="com.example.textquest.ui.chapters.ChapterListener" />
     </data>
 
     <LinearLayout
@@ -18,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+            android:onClick="@{()->clickListener.onClick(chapter)}"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -26,7 +32,8 @@
                 style="@style/styleTextItemList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chapter 1" />
+                android:text="Chapter 1"
+                app:numberChapter="@{chapter}" />
 
             <TextView
                 android:id="@+id/chapters_name"
@@ -34,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="&quot;beginning&quot;"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                app:nameChapter="@{chapter}" />
         </LinearLayout>
 
     </LinearLayout>
