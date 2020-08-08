@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="newGameViewModel"
+            name="personageViewModel"
             type="com.example.textquest.ui.personage.PersonageViewModel" />
     </data>
 

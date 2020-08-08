@@ -39,7 +39,7 @@ class PersonageAdapter(val clickListener: PersonageListener) : ListAdapter<Perso
 
 class PersonageDiffCallback : DiffUtil.ItemCallback<Personage>() {
     override fun areItemsTheSame(oldItem: Personage, newItem: Personage): Boolean {
-        return oldItem.idPersonage == newItem.idPersonage
+        return oldItem.personageId == newItem.personageId
     }
 
     override fun areContentsTheSame(oldItem: Personage, newItem: Personage): Boolean {
@@ -48,5 +48,5 @@ class PersonageDiffCallback : DiffUtil.ItemCallback<Personage>() {
 }
 
 class PersonageListener(val clickListener: (buttonId: Int, idPersonage: Long) -> Unit) {
-    fun onClick(id: Int, personage: Personage) = clickListener(id, personage.idPersonage)
+    fun onClick(id: Int, personage: Personage) = clickListener(id, personage.personageId)
 }

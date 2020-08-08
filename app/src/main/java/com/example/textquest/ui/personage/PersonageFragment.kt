@@ -28,7 +28,7 @@ class PersonageFragment : Fragment() {
         val viewModelFactory = PersonageViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(PersonageViewModel::class.java)
 
-        binding.newGameViewModel = viewModel
+        binding.personageViewModel = viewModel
 
         viewModel.navigateToInformationPersonage.observe(viewLifecycleOwner, Observer {
             it?.let {
