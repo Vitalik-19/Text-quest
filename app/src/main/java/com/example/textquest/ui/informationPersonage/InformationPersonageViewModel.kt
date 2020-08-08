@@ -31,7 +31,7 @@ class InformationPersonageViewModel(val database: AppDatabaseDao, application: A
 
     private suspend fun getPersonageFromDatabase(key: Long): Personage? {
         return withContext(Dispatchers.IO) {
-            val personage = database.get(key)
+            val personage = database.getPersonage(key)
             personage
         }
     }

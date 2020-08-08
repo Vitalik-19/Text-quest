@@ -1,35 +1,50 @@
 package com.example.textquest.ui.chapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.textquest.R
+import com.example.textquest.database.Chapter
+import com.example.textquest.databinding.ItemChapterBinding
 
-class ChaptersAdapter : RecyclerView.Adapter<ChaptersAdapter.ViewHolder>() {
+class ChaptersAdapter : ListAdapter<Chapter, ChaptersAdapter.ViewHolder>(ChaptersDiffCallback()) {
 
-    //todo to connect data
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-    override fun getItemCount() = 10
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(val binding: ItemChapterBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: Chapter) {
+            binding.chaptersNumber.text = "Chapter ${item.chapterId}"
+            binding.chaptersName.text = item.nameChapter
+        }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 //todo to connect binding adapter
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val itemView = layoutInflater.inflate(R.layout.item_chapter, parent, false)
+                val binding = ItemChapterBinding.inflate(layoutInflater, parent, false)
 
-                return ViewHolder(itemView)
+                return ViewHolder(binding)
             }
         }
+    }
+}
 
+class ChaptersDiffCallback : DiffUtil.ItemCallback<Chapter>() {
+    override fun areItemsTheSame(oldItem: Chapter, newItem: Chapter): Boolean {
+        return oldItem.chapterId == newItem.chapterId
+    }
+
+    override fun areContentsTheSame(oldItem: Chapter, newItem: Chapter): Boolean {
+        return oldItem == newItem
     }
 
 }

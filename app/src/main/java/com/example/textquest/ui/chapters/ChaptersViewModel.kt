@@ -5,5 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.textquest.database.AppDatabaseDao
 
 class ChaptersViewModel(val database: AppDatabaseDao, application: Application) : AndroidViewModel(application) {
-    // TODO: Implement the ViewModel
+
+    val chapters = database.getChapters()
 }
