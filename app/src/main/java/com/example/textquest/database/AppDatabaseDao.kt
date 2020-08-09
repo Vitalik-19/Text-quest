@@ -67,4 +67,8 @@ public abstract class AppDatabaseDao {
     @Query("SELECT * FROM Chapter WHERE chapterId = :key")
     abstract fun getChapterWithGamePlays(key: Long): ChapterWithGamePlays?
 
+    @Transaction
+    @Query("SELECT * FROM GamePlay WHERE gamePlayId = :key")
+    abstract fun getGamePlayWithAnswers(key: Long): GamePlayWithAnswers?
+
 }

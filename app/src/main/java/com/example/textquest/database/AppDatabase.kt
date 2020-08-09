@@ -7,7 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Personage::class, Chapter::class, GamePlay::class], version = 5, exportSchema = true)
+@Database(entities = [Personage::class, Chapter::class,
+    GamePlay::class, Answer::class], version = 6, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val appDatabaseDao: AppDatabaseDao
@@ -45,6 +46,15 @@ abstract class AppDatabase : RoomDatabase() {
                             " ownerId INTEGER NOT NULL DEFAULT 0)")
                 }
             }
+            val MIGRATION_5_6 = object : Migration(5, 6) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL("CREATE TABLE Answer(" +
+                            "answerId INTEGER PRIMARY KEY NOT NULL DEFAULT 0," +
+                            " textAnswer TEXT NOT NULL DEFAULT ''," +
+                            " navigationToGamePlayId INTEGER NOT NULL DEFAULT 0,"+
+                            " ownerGamePlayId INTEGER NOT NULL DEFAULT 0)")
+                }
+            }
 
             synchronized(this) {
                 var instance = INSTANCE
@@ -52,7 +62,7 @@ abstract class AppDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                             context.applicationContext, AppDatabase::class.java, "database.db")
                             .createFromAsset("database/database.db")
-                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
                             .fallbackToDestructiveMigration()
                             .build()
                     INSTANCE = instance
