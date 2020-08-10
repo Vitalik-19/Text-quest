@@ -1,33 +1,48 @@
 package com.example.textquest.ui.gamePlay
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.textquest.R
 import com.example.textquest.database.Answer
+import com.example.textquest.databinding.ItemAnswerBinding
 
-class GamePlayAdapter : RecyclerView.Adapter<GamePlayAdapter.ViewHolder>() {
-    var data = listOf<Answer>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+class GamePlayAdapter : ListAdapter<Answer, GamePlayAdapter.ViewHolder>(GamePlayDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val itemView = layoutInflater.inflate(R.layout.item_answer, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder.from(parent)
     }
-
-    override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textAnswer.text = data[position].textAnswer
+        val item = getItem(position)
+        holder.bind(item)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textAnswer = itemView.findViewById<TextView>(R.id.item_answer_text)
+
+    class ViewHolder(val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: Answer) {
+            binding.itemAnswerText.text = item.textAnswer
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemAnswerBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
+            }
+        }
     }
+}
+
+class GamePlayDiffCallback : DiffUtil.ItemCallback<Answer>() {
+    override fun areItemsTheSame(oldItem: Answer, newItem: Answer): Boolean {
+        return oldItem.answerId == newItem.answerId
+    }
+
+    override fun areContentsTheSame(oldItem: Answer, newItem: Answer): Boolean {
+        return oldItem == newItem
+    }
+
 }
