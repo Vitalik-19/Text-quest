@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [Personage::class, Chapter::class,
-    GamePlay::class, Answer::class], version = 6, exportSchema = true)
+    GamePlay::class, Answer::class], version = 7, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val appDatabaseDao: AppDatabaseDao
@@ -51,8 +51,13 @@ abstract class AppDatabase : RoomDatabase() {
                     database.execSQL("CREATE TABLE Answer(" +
                             "answerId INTEGER PRIMARY KEY NOT NULL DEFAULT 0," +
                             " textAnswer TEXT NOT NULL DEFAULT ''," +
-                            " navigationToGamePlayId INTEGER NOT NULL DEFAULT 0,"+
+                            " navigationToGamePlayId INTEGER NOT NULL DEFAULT 0," +
                             " ownerGamePlayId INTEGER NOT NULL DEFAULT 0)")
+                }
+            }
+            val MIGRATION_6_7 = object : Migration(6, 7) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL("ALTER TABLE Answer ADD COLUMN navigationToChapterId INTEGER NOT NULL DEFAULT 0")
                 }
             }
 
@@ -62,7 +67,8 @@ abstract class AppDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                             context.applicationContext, AppDatabase::class.java, "database.db")
                             .createFromAsset("database/database.db")
-                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
+                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3,
+                                    MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7)
                             .fallbackToDestructiveMigration()
                             .build()
                     INSTANCE = instance

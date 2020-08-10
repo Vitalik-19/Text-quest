@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.textquest.database.Answer
 import com.example.textquest.databinding.ItemAnswerBinding
 
-class GamePlayAdapter : ListAdapter<Answer, GamePlayAdapter.ViewHolder>(GamePlayDiffCallback()) {
+class GamePlayAdapter(val clickListener: GamePlayListener) : ListAdapter<Answer, GamePlayAdapter.ViewHolder>(GamePlayDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -16,14 +16,16 @@ class GamePlayAdapter : ListAdapter<Answer, GamePlayAdapter.ViewHolder>(GamePlay
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(clickListener, item)
     }
 
 
     class ViewHolder(val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Answer) {
-            binding.itemAnswerText.text = item.textAnswer
+        fun bind(clickListener: GamePlayListener, item: Answer) {
+            binding.answer = item
+            binding.clickListener = clickListener
+            binding.executePendingBindings()
         }
 
         companion object {
@@ -44,5 +46,8 @@ class GamePlayDiffCallback : DiffUtil.ItemCallback<Answer>() {
     override fun areContentsTheSame(oldItem: Answer, newItem: Answer): Boolean {
         return oldItem == newItem
     }
+}
 
+class GamePlayListener(val clickListener: (answerId: Long) -> Unit) {
+    fun onClick(answer: Answer) = clickListener(answer.answerId)
 }

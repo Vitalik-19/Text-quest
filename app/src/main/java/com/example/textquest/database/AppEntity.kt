@@ -35,6 +35,7 @@ data class Answer(
         val answerId: Long = 0,
         val textAnswer: String = "",
         val navigationToGamePlayId: Long = 0,
+        val navigationToChapterId: Long = 0,
         val ownerGamePlayId: Long = 0
 )
 

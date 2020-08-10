@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -27,9 +28,18 @@ class GamePlayFragment : Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory).get(GamePlayViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.game_play_fragment, container, false)
-        adapter = GamePlayAdapter()
-
-        viewModel.initializeCreateGamePlay(arguments.chapterKey)
+        adapter = GamePlayAdapter(GamePlayListener { answerId ->
+            viewModel.onAnswerClicked(answerId)
+        })
+        viewModel.navigationToNext.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                //todo update data
+                Toast.makeText(context, "onClick $it", Toast.LENGTH_LONG).show()
+//                viewModel.onNextNavigated()
+                viewModel.logic()
+            }
+        })
+        viewModel.initializeCreateGamePlays(arguments.chapterKey)
 
         viewModel.answers.observe(viewLifecycleOwner, Observer {
             it?.let {
