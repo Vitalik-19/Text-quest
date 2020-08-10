@@ -60,9 +60,6 @@
         android:label="game_play_fragment"
         tools:layout="@layout/game_play_fragment" >
         <action
-            android:id="@+id/action_gamePlayFragment_self"
-            app:destination="@id/gamePlayFragment" />
-        <action
             android:id="@+id/action_gamePlayFragment_to_gameOverFragment"
             app:destination="@id/gameOverFragment" />
         <argument
@@ -73,5 +70,15 @@
         android:id="@+id/gameOverFragment"
         android:name="com.example.textquest.ui.gameOver.GameOverFragment"
         android:label="game_over_fragment"
-        tools:layout="@layout/game_over_fragment" />
+        tools:layout="@layout/game_over_fragment" >
+        <action
+            android:id="@+id/action_gameOverFragment_to_gamePlayFragment"
+            app:destination="@id/gamePlayFragment" />
+        <action
+            android:id="@+id/action_gameOverFragment_to_chaptersFragment"
+            app:destination="@id/chaptersFragment" />
+        <argument
+            android:name="gamePlayKey"
+            app:argType="long" />
+    </fragment>
 </navigation>

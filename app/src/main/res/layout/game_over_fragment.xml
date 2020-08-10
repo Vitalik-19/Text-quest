@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/backgroundHomeScreen"
     android:layout_width="match_parent"
@@ -8,10 +9,46 @@
     tools:context=".ui.gameOver.GameOverFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/game_over_text_over"
+        style="@style/styleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:gravity="center"
         android:text="Game Over screen"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/game_over_navigation_to_chapter_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/game_over_navigation_to_chapter_button"
+        style="@style/styleTextItemList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/border_item_list"
+        android:text="К главам"
+        app:layout_constraintBottom_toTopOf="@+id/game_over_navigation_to_game_play_button"
+        app:layout_constraintEnd_toEndOf="@+id/game_over_text_over"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/game_over_text_over" />
+
+    <Button
+        android:id="@+id/game_over_navigation_to_game_play_button"
+        style="@style/styleTextItemList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/border_item_list"
+        android:text="К предыдущему шагу"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_over_navigation_to_chapter_button"
+        app:layout_constraintStart_toStartOf="@+id/game_over_navigation_to_chapter_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

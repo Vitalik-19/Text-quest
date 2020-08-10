@@ -23,7 +23,7 @@ class ChaptersFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val arguments = InformationPersonageFragmentArgs.fromBundle(requireArguments())
+        val arguments = ChaptersFragmentArgs.fromBundle(requireArguments())
         val application = requireNotNull(this.activity).application
         val dataSource = AppDatabase.getInstance(application).appDatabaseDao
         val viewModelFactory = ChaptersViewModelFactory(dataSource, application)

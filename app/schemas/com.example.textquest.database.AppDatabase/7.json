@@ -1,0 +1,154 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 7,
+    "identityHash": "1d385311554cefd5796391fa8e631232",
+    "entities": [
+      {
+        "tableName": "Personage",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`personageId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `firstNamePersonage` TEXT NOT NULL, `descriptionPersonage` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "personageId",
+            "columnName": "personageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstNamePersonage",
+            "columnName": "firstNamePersonage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descriptionPersonage",
+            "columnName": "descriptionPersonage",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "personageId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Chapter",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`chapterId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nameChapter` TEXT NOT NULL, `ownerId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "chapterId",
+            "columnName": "chapterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameChapter",
+            "columnName": "nameChapter",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ownerId",
+            "columnName": "ownerId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "chapterId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "GamePlay",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`gamePlayId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `textStory` TEXT NOT NULL, `ownerId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "gamePlayId",
+            "columnName": "gamePlayId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "textStory",
+            "columnName": "textStory",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ownerId",
+            "columnName": "ownerId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "gamePlayId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Answer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`answerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `textAnswer` TEXT NOT NULL, `navigationToGamePlayId` INTEGER NOT NULL, `navigationToChapterId` INTEGER NOT NULL, `ownerGamePlayId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "answerId",
+            "columnName": "answerId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "textAnswer",
+            "columnName": "textAnswer",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "navigationToGamePlayId",
+            "columnName": "navigationToGamePlayId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "navigationToChapterId",
+            "columnName": "navigationToChapterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ownerGamePlayId",
+            "columnName": "ownerGamePlayId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "answerId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1d385311554cefd5796391fa8e631232')"
+    ]
+  }
+}
