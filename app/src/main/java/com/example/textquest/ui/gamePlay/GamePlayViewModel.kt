@@ -1,7 +1,6 @@
 package com.example.textquest.ui.gamePlay
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -30,59 +29,92 @@ class GamePlayViewModel(val database: AppDatabaseDao, application: Application) 
     val answers: LiveData<List<Answer>>
         get() = _answers
 
-    private val _navigationToNext = MutableLiveData<Long>()
-    val navigationToNext: LiveData<Long>
-        get() = _navigationToNext
+    private val _navigationToNextGamePlay = MutableLiveData<Long>()
+    val navigationToNextGamePlay: LiveData<Long>
+        get() = _navigationToNextGamePlay
+
+    private val _navigationToGameOver = MutableLiveData<Long>()
+    val navigationToGameOver: LiveData<Long>
+        get() = _navigationToGameOver
+
+    private val _navigationToChapter = MutableLiveData<Boolean>()
+    val navigationToChapter: LiveData<Boolean>
+        get() = _navigationToChapter
+
+    private val _nextChapterId = MutableLiveData<Long>()
+    val nextChapterId: LiveData<Long>
+        get() = _nextChapterId
 
     fun onAnswerClicked(answerId: Long) {
-        _navigationToNext.value = answerId
+        when (answerId) {
+            0L -> {
+                when (gamePlay.value!!.navigationToChapterId) {
+                    0L -> {
+                        //TODO GAME OVER
+                    }
+                    else -> {
+                        //TODO navigation next chapter
+                        initializeCreateGamePlays(gamePlay.value!!.navigationToChapterId)
+                    }
+                }
+            }
+            else -> {
+                _navigationToNextGamePlay.value = answerId
+            }
+        }
     }
 
-    fun onNextNavigated() {
-        _navigationToNext.value = null
+    fun onNavigationChapterClicked() {
+        uiScope.launch {
+            _nextChapterId.value = gamePlay.value!!.navigationToChapterId
+        }
+    }
+
+    fun onGameOverNavigated() {
+        _navigationToGameOver.value = null
+    }
+
+    fun onChapterNavigated() {
+        //TODO
     }
 
     fun initializeCreateGamePlays(chapterId: Long) {
         uiScope.launch {
             getCreateGamePlaysFromDatabase(chapterId)?.gamePlays.let {
 
+                //todo try catch
+
                 if (!it.isNullOrEmpty()) {
                     _gamePlays.value = it
-                    logic()
+                    logicGamePlay(0)
                 }
             }
         }
     }
 
-    fun logic() {
-        when (gamePlay.value?.gamePlayId) {
-            null -> {
-                _gamePlay.value = gamePlays.value!![0]
+    fun logicGamePlay(gamePlayIndex: Int) {
+        uiScope.launch {
+            _gamePlay.value = gamePlays.value!![gamePlayIndex]
+            getCreateAnswersFromDatabase(gamePlay.value!!.gamePlayId)?.answers.let { answers ->
+                if (answers.isNullOrEmpty()) {
+                    if (gamePlay.value!!.navigationToChapterId != 0L)
+                        _answers.value = listOf(Answer(0, "К следующей главе"))
+                    else {
+                        _answers.value = listOf()
+                        _navigationToGameOver.value = gamePlay.value!!.gamePlayId
+                    }
+                } else
+                    _answers.value = answers
             }
-            else -> {
-                _gamePlay.value = gamePlays.value!![answers.value!![navigationToNext.value!!.toInt() - 1].answerId.toInt()]
-            }
+            _textStory.value = gamePlay.value!!.textStory
         }
-        _textStory.value = gamePlay.value!!.textStory
-        initializeCreateAnswers(gamePlay.value!!.gamePlayId)
     }
+
 
     private suspend fun getCreateGamePlaysFromDatabase(key: Long): ChapterWithGamePlays? {
         return withContext(Dispatchers.IO) {
             val gamePlays = database.getChapterWithGamePlays(key)
             gamePlays
-        }
-    }
-
-    fun initializeCreateAnswers(gamePlayId: Long) {
-        uiScope.launch {
-            getCreateAnswersFromDatabase(gamePlayId)?.answers.let {
-                if (!it.isNullOrEmpty()) {
-                    _answers.value = it
-                } else {
-                    _answers.value = listOf()
-                }
-            }
         }
     }
 

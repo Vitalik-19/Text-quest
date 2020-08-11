@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [Personage::class, Chapter::class,
-    GamePlay::class, Answer::class], version = 7, exportSchema = true)
+    GamePlay::class, Answer::class], version = 8, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val appDatabaseDao: AppDatabaseDao
@@ -61,6 +61,22 @@ abstract class AppDatabase : RoomDatabase() {
                 }
             }
 
+            val MIGRATION_7_8 = object : Migration(7, 8) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL("CREATE TABLE Answer_new(" +
+                            "answerId INTEGER PRIMARY KEY NOT NULL DEFAULT 0," +
+                            " textAnswer TEXT NOT NULL DEFAULT ''," +
+                            " navigationToGamePlayId INTEGER NOT NULL DEFAULT 0," +
+                            " ownerGamePlayId INTEGER NOT NULL DEFAULT 0)")
+                    database.execSQL("INSERT INTO Answer_new " +
+                            "(answerId, textAnswer, navigationToGamePlayId, ownerGamePlayId)" +
+                            " SELECT answerId, textAnswer, navigationToGamePlayId, ownerGamePlayId FROM Answer")
+                    database.execSQL("DROP TABLE Answer")
+                    database.execSQL("ALTER TABLE Answer_new RENAME TO Answer")
+                    database.execSQL("ALTER TABLE GamePlay ADD COLUMN navigationToChapterId INTEGER NOT NULL DEFAULT 0")
+                }
+            }
+
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
@@ -68,7 +84,7 @@ abstract class AppDatabase : RoomDatabase() {
                             context.applicationContext, AppDatabase::class.java, "database.db")
                             .createFromAsset("database/database.db")
                             .addMigrations(MIGRATION_1_2, MIGRATION_2_3,
-                                    MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7)
+                                    MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
                             .fallbackToDestructiveMigration()
                             .build()
                     INSTANCE = instance

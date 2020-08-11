@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.textquest.R
 import com.example.textquest.database.AppDatabase
@@ -31,14 +31,20 @@ class GamePlayFragment : Fragment() {
         adapter = GamePlayAdapter(GamePlayListener { answerId ->
             viewModel.onAnswerClicked(answerId)
         })
-        viewModel.navigationToNext.observe(viewLifecycleOwner, Observer {
+
+        viewModel.navigationToNextGamePlay.observe(viewLifecycleOwner, Observer {
             it?.let {
-                //todo update data
-                Toast.makeText(context, "onClick $it", Toast.LENGTH_LONG).show()
-//                viewModel.onNextNavigated()
-                viewModel.logic()
+                viewModel.logicGamePlay(it.toInt())
             }
         })
+
+        viewModel.navigationToGameOver.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(GamePlayFragmentDirections.actionGamePlayFragmentToGameOverFragment(it))
+                viewModel.onGameOverNavigated()
+            }
+        })
+
         viewModel.initializeCreateGamePlays(arguments.chapterKey)
 
         viewModel.answers.observe(viewLifecycleOwner, Observer {

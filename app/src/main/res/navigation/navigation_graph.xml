@@ -61,7 +61,9 @@
         tools:layout="@layout/game_play_fragment" >
         <action
             android:id="@+id/action_gamePlayFragment_to_gameOverFragment"
-            app:destination="@id/gameOverFragment" />
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@id/gamePlayFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="chapterKey"
             app:argType="long" />
